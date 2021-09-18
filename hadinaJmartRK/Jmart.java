@@ -10,43 +10,48 @@ package hadinaJmartRK;
 public class Jmart
 {
     public static void main(String[] args){
+        create();
         //Promo
         System.out.println(getPromo());
         //Customer
         System.out.println(getCustomer());
             
         //Discount Percentage
-        System.out.println(+ getDiscountPercentage(1000,900));
-        System.out.println(+ getDiscountPercentage(1000, 0));
-        System.out.println(+ getDiscountPercentage(0, 0));
-        System.out.println(+ getDiscountPercentage(0, 1));
+        System.out.println(getDiscountPercentage(1000,900));
+        System.out.println(getDiscountPercentage(1000, 0));
+        System.out.println(getDiscountPercentage(0, 0));
+        System.out.println(getDiscountPercentage(0, 1));
             
         //Discounted Price
-        System.out.println(+ getDiscountedPrice(1000, 10.0f));
-        System.out.println(+ getDiscountedPrice(1000, 100.0f));
-        System.out.println(+ getDiscountedPrice(1000, 120.0f));
-        System.out.println(+ getDiscountedPrice(0, 0.0f));
+        System.out.println(getDiscountedPrice(1000, 10.0f));
+        System.out.println(getDiscountedPrice(1000, 100.0f));
+        System.out.println(getDiscountedPrice(1000, 120.0f));
+        System.out.println(getDiscountedPrice(0, 0.0f));
             
         //Original Price
-        System.out.println(+ getOriginalPrice(900, 10.0f));
-        System.out.println(+ getOriginalPrice(1000, 0.0f));
-        System.out.println(+ getOriginalPrice(0, 100.0f));
-        System.out.println(+ getOriginalPrice(0, 120.0f));
+        System.out.println(getOriginalPrice(900, 10.0f));
+        System.out.println(getOriginalPrice(1000, 0.0f));
+        System.out.println(getOriginalPrice(0, 100.0f));
+        System.out.println(getOriginalPrice(0, 120.0f));
             
         //Commission Multiplier
         System.out.println(getCommissionMultiplier());
             
         //Adjusted Price
-        System.out.println(+ getAdjustedPrice(1000));
-        System.out.println(+ getAdjustedPrice(500));
-        System.out.println(+ getAdjustedPrice(0));
+        System.out.println(getAdjustedPrice(1000));
+        System.out.println(getAdjustedPrice(500));
+        System.out.println(getAdjustedPrice(0));
             
         //Admin Fee
-        System.out.println(+ getAdminFee(1000));
-        System.out.println(+ getAdminFee(500));
-        System.out.println(+ getAdminFee(0));  
+        System.out.println(getAdminFee(1000));
+        System.out.println(getAdminFee(500));
+        System.out.println(getAdminFee(0));  
     }
         
+    
+    public static Product create(){
+        return
+    }
     public static int getPromo(){
         return 0;
     }
