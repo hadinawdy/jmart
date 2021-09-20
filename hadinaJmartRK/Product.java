@@ -9,26 +9,13 @@ package hadinaJmartRK;
  */
 public class Product
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class Product
-     */
     public Product(String name, int weight, boolean ConditionUsed, PriceTag priceTag, ProductCategory category)
     {
         
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
+    public static Product createProduct()
     {
-        // put your code here
-        return x + y;
+        return null;
     }
 }

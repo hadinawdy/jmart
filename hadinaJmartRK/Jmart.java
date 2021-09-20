@@ -50,7 +50,7 @@ public class Jmart
         
     
     public static Product create(){
-        return
+        return new Product ("pen", 4, false, new PriceTag(10000L), ProductCategory.STATIONERY);
     }
     public static int getPromo(){
         return 0;
@@ -100,5 +100,20 @@ public class Jmart
         
     public static int getAdminFee(int price){
         return (int) ((float) price * getCommissionMultiplier());
+    }
+    
+    public static Product createProduct()
+    {
+        return null;
+    }
+    
+    public static Coupon createCoupun()
+    {
+        return null;
+    }
+
+    public static ShipmentDuration createShipmentDuration()
+    {
+        return null;
     }
 }

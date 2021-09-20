@@ -2,13 +2,11 @@ package hadinaJmartRK;
 
 public class ProductRating
 {
-    // instance variables - replace the example below with your own
     private long total;
     private long count;
 
     public ProductRating()
     {
-        // initialise instance variables
         int count= 0;
         long total= 0;
     }
