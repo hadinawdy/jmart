@@ -1,6 +1,6 @@
 package hadinaJmartRK;
 
-public class Coupon
+public class Coupon extends Recognizable implements FileParser
 {
     private boolean used;
     public final String name;
@@ -9,8 +9,9 @@ public class Coupon
     public final double cut;
     public final double minimum;
 
-    public Coupon(String name, int code, Type type, double cut, double minimum)
+    public Coupon(String name, int code, Type type, double cut, double minimum, int id)
     {
+        super(id);
         this.name = name;
         this.code = code;
         this.type = type;
@@ -48,5 +49,11 @@ public class Coupon
             return pricetag.getAdjustedPrice() - this.cut;
         }
         return 1;
+    }
+    
+    @Override
+    public boolean read(String content)
+    {
+        return false;
     }
 }
