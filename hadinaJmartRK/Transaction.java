@@ -2,11 +2,12 @@ package hadinaJmartRK;
 
 
 /**
- * Write a description of class Transaction here.
+ * Write a description of interface Transactor here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
+
 public abstract class Transaction extends Recognizable
 {
     public String time = "time";

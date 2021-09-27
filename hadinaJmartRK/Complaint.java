@@ -7,10 +7,19 @@ package hadinaJmartRK;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Complaint
+public class Complaint extends Recognizable implements FileParser
 {
-    // instance variables - replace the example below with your own
+    public String date;
+    public String desc;
 
-    Complaint(int id, Payment payment, String desc)
-Complaint(int id, int buyerId, int storeId, int paymentId, String desc)
+    public Complaint(int id, String desc){
+        super(id);
+        this.desc = desc;
+        this.date = "27-09-21";
+    }
+
+    @Override
+    public boolean read(String content){
+        return false;
+    }
 }
