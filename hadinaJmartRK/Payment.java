@@ -7,7 +7,7 @@ package hadinaJmartRK;
  * @author (your name)
  * @version (a version number or a date)
  */
-public abstract class Payment extends Invoice
+public abstract class Payment extends Invoice implements Transactor
 {
     public Shipment shipment;
     public int productCount;
