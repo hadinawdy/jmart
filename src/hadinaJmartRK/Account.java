@@ -13,6 +13,8 @@ import java.util.regex.Pattern;
 
 public class Account extends Recognizable implements FileParser
 {
+    public static final String REGEX_EMAIL = "^[a-zA-Z0-9&*_~]+(\\.[a-zA-Z0-9&*_~]+)*@[a-zA-Z0-9][a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*$";
+    public static final String REGEX_PASSWORD = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?!.* ).{8,}$";
     public String name;
     public String email;
     public String password;
@@ -44,9 +46,6 @@ public class Account extends Recognizable implements FileParser
             "email: " + this.email + "\n" +
             "password: " + this.password + "\n");
     }
-    
-    public static final String REGEX_EMAIL = "^[a-zA-Z0-9&~]+(\\.[a-zA-Z0-9&_~]+)@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)$";
-    public static final String REGEX_PASSWORD = "^(?=.[a-z])(?=.[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$";
     
     public boolean validate(){
         Pattern pattern = Pattern.compile(REGEX_EMAIL);

@@ -9,6 +9,7 @@ package hadinaJmartRK;
  */
 
 import java.util.Date;
+import java.text.SimpleDateFormat;
 public class Complaint extends Recognizable implements FileParser
 {
     public Date date;

@@ -36,14 +36,11 @@ public abstract class Invoice extends Recognizable implements FileParser
         this.rating = Rating.NONE;
         this.status = status.WAITING_CONFIRMATION;
     }
-    
+    public abstract double getTotalPay();
+
         @Override
     public boolean read(String content){
         return false;
-    }
-
-    public double getTotalPay(){
-        return 0.0f;
     }
     
     public ArrayList<Record> history= new ArrayList<Record>();
