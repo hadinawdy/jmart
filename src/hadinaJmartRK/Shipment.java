@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Shipment implements FileParser
+public class Shipment
 {
     public String address;
     public int shipmentCost;
@@ -25,11 +25,7 @@ public class Shipment implements FileParser
         this.duration = duration;
         this.receipt = receipt;
     }
-    
-    @Override 
-    public boolean read(String content){
-        return false;
-    }
+
     
     public static class Duration{
         public static final SimpleDateFormat ESTIMATION_FORMAT = new SimpleDateFormat("E MMMM dd yyyy");

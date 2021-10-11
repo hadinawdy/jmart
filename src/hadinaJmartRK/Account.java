@@ -11,7 +11,7 @@ package hadinaJmartRK;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Account extends Recognizable implements FileParser
+public class Account extends Recognizable
 {
     public static final String REGEX_EMAIL = "^[a-zA-Z0-9&*_~]+(\\.[a-zA-Z0-9&*_~]+)*@[a-zA-Z0-9][a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*$";
     public static final String REGEX_PASSWORD = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?!.* ).{8,}$";
@@ -24,16 +24,6 @@ public class Account extends Recognizable implements FileParser
         this.name = name;
         this.email = email;
         this.password = password;
-    }
-
-    @Override
-    public boolean read(String content){
-        return false;
-    }
-
-    @Override
-    public Object write(){
-        return null;
     }
 
     public static Object newInstance(String content){

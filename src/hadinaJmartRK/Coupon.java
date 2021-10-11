@@ -1,6 +1,6 @@
 package hadinaJmartRK;
 
-public class Coupon extends Recognizable implements FileParser
+public class Coupon extends Recognizable
 {
     private boolean used;
     public final String name;
@@ -24,7 +24,7 @@ public class Coupon extends Recognizable implements FileParser
        return used;
     }
 
-    public boolean canApply(PriceTag priceTag)
+    public boolean canApply(Treasury priceTag)
     {
         if(priceTag.getAdjustedPrice() >= minimum && used == false)
         {
@@ -40,7 +40,7 @@ public class Coupon extends Recognizable implements FileParser
     DISCOUNT, REBATE
     }
 
-    public double apply(PriceTag pricetag){
+    public double apply(Treasury pricetag){
         this.used = true;
         if (type == Type.DISCOUNT){
             return (pricetag.getAdjustedPrice() * (100-this.cut)/100);
@@ -49,11 +49,5 @@ public class Coupon extends Recognizable implements FileParser
             return pricetag.getAdjustedPrice() - this.cut;
         }
         return 1;
-    }
-    
-    @Override
-    public boolean read(String content)
-    {
-        return false;
     }
 }

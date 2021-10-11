@@ -1,6 +1,6 @@
 package hadinaJmartRK;
 
-public class PriceTag
+public class Treasury
 {
     public static final double COMMISSION_MULTIPLIER = 0.05;
     public static final double BOTTOM_PRICE = 20000.0;
@@ -9,14 +9,14 @@ public class PriceTag
     public double price;
 
     /**
-     * Constructor for objects of class PriceTag
+     * Constructor for objects of class Treasury
      */
-    public PriceTag(double price)
+    public Treasury(double price)
     {
         this.price = price;
     }
     
-     public PriceTag(double price, double discount){
+     public Treasury(double price, double discount){
         this.price = price;
         this.discount  = discount;
     }

@@ -9,7 +9,7 @@ package hadinaJmartRK;
 import java.util.ArrayList;
 import java.util.Date;
 
-public abstract class Invoice extends Recognizable implements FileParser
+public abstract class Invoice extends Recognizable
 {
     public Date date;
     public int buyerId;
@@ -37,11 +37,6 @@ public abstract class Invoice extends Recognizable implements FileParser
         this.status = status.WAITING_CONFIRMATION;
     }
     public abstract double getTotalPay();
-
-        @Override
-    public boolean read(String content){
-        return false;
-    }
     
     public ArrayList<Record> history= new ArrayList<Record>();
     class Record{
