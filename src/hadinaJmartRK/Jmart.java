@@ -9,30 +9,33 @@ package hadinaJmartRK;
 
 import java.util.Date;
 import java.text.SimpleDateFormat;
-public class Jmart
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.List;
+import com.google.gson.*;
+
+class Jmart
 {
-    public static void main(String[] args)
+    class Country
     {
-       System.out.println(Shipment.Duration.KARGO.getEstimatedArrival(new Date()));
-       Complaint complaint = new Complaint (8, "Barang dikirim ke alamat yang salah \n");
-       System.out.print(complaint);
-       Account account = new Account(56,"Hadina","hadina@gmail.com","brokenaglass");
-       account.validate();
-       System.out.println(account);
+       public String name;
+       public int population;
+       public List<String> listOfStates;
     }
 
-    public static Product createProduct()
-    {
-        return null;
-    }
-
-    public static Coupon createCoupun()
-    {
-        return null;
-    }
-
-    public static Shipment createShipmentDuration()
-    {
-        return null;
+    public static void main(String[] args) {
+        String filepath = "C:/Users/asus/Documents/prakoop/jmart/src/city.json";
+        Gson gson = new Gson();
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(filepath));
+            Country input = gson.fromJson(br, Country.class);
+            System.out.println("name: " + input.name);
+            System.out.println("population: " + input.population);
+            System.out.println("states:");
+            input.listOfStates.forEach(state -> System.out.println(state));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
