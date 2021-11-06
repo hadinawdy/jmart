@@ -10,7 +10,7 @@ package hadinaJmartRK;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Store extends Recognizable
+public class Store extends Serializable
 {
     public static String REGEX_PHONE = "^\\d{9,12}$";
     public static String REGEX_NAME = "^[A-Z](?1.*(\\s)\1).{4,20}$";

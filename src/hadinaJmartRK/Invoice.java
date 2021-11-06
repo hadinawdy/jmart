@@ -9,7 +9,7 @@ package hadinaJmartRK;
 import java.util.ArrayList;
 import java.util.Date;
 
-public abstract class Invoice extends Recognizable
+public abstract class Invoice extends Serializable
 {
     public Date date;
     public int buyerId;

@@ -7,7 +7,7 @@ package hadinaJmartRK;
  * @version (a version number or a date)
  */
 
-public abstract class Product extends Recognizable
+public abstract class Product extends Serializable
 {
     public int id;
     public String name;

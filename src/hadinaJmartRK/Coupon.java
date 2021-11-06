@@ -1,6 +1,6 @@
 package hadinaJmartRK;
 
-public class Coupon extends Recognizable
+public class Coupon extends Serializable
 {
     private boolean used;
     public final String name;
