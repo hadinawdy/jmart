@@ -2,46 +2,34 @@ package hadinaJmartRK;
 
 public class Treasury
 {
-    public static final double COMMISSION_MULTIPLIER = 0.05;
-    public static final double BOTTOM_PRICE = 20000.0;
-    public static final double BOTTOM_FEE = 1000.0;
-    public double discount;
-    public double price;
+    public static final double COMMISSION_MULTIPLIER = 0.05d;
+    public static final double BOTTOM_PRICE = 20000.0d;
+    public static final double BOTTOM_FEE = 1000.0d;
 
-    /**
-     * Constructor for objects of class Treasury
-     */
-    public Treasury(double price)
-    {
-        this.price = price;
+    public static double getAdjustedPrice(double price, double discount){
+        return getDiscountedPrice(price, discount) + getAdminFee(price, discount);
     }
-    
-     public Treasury(double price, double discount){
-        this.price = price;
-        this.discount  = discount;
-    }
-    
-     private double getDiscountedPrice(){
-    if (discount>=100){
-        return 0;
-    }
-    else{
-        double totalPrice = price - (price * (discount/100));
-        return totalPrice;
-    }
-    }
-    
-    public double getAdminFee(){
-        double discount = getDiscountedPrice();
-        
-        if (discount<BOTTOM_PRICE){
+
+    public static double getAdminFee(double price, double discount){
+        double afterDiscount = getDiscountedPrice(price, discount);
+        if (afterDiscount < BOTTOM_PRICE){
             return BOTTOM_FEE;
         }
-            return discount - COMMISSION_MULTIPLIER;
+        else{
+            return afterDiscount * COMMISSION_MULTIPLIER;
+        }
     }
-    
-    public double getAdjustedPrice(){
-        return getDiscountedPrice() + getAdminFee();
+
+    private static double getDiscountedPrice(double price, double discount){
+        if (discount > 100.0){
+            discount = 100.0;
+        }
+        if (discount == 100.0){
+            return 0.0;
+        }
+        else{
+            return price * ((100.0 - discount)/100.0);
+        }
     }
 }
-    
+

@@ -18,36 +18,39 @@ public class Account extends Serializable
     public String name;
     public String email;
     public String password;
+    public double balance;
+    public Store store;
 
-    public Account(int id, String name, String email, String password){
-        super(id);
+    public Account(String name, String email, String password, double balance){
         this.name = name;
         this.email = email;
         this.password = password;
+        this.balance = balance;
     }
 
-    public static Object newInstance(String content){
-        return null;
+    /*@Override
+    public boolean read(String content){
+        return false;
     }
-    
+
+
+    @Override
     public String toString(){
         return(
-            "name: " + this.name + "\n" + 
+            "name: " + this.name +"\n" +
             "email: " + this.email + "\n" +
-            "password: " + this.password + "\n");
-    }
-    
-    public boolean validate(){
-        Pattern pattern = Pattern.compile(REGEX_EMAIL);
-        Matcher matcher = pattern.matcher(email);
-        Pattern pattern2 = Pattern.compile(REGEX_PASSWORD);
-        Matcher matcher2 = pattern2.matcher(password);
+            "password: " + this.password + "\n"
+        );
+    }*/
 
-        if (matcher.find()==true && matcher2.find()==true){
-            return true;
-        }
-        else {
-            return false;
-        }
+
+    public boolean validate()
+    {
+        Pattern patternEmail = Pattern.compile(REGEX_EMAIL);
+        Matcher matcherEmail = patternEmail.matcher(email);
+        Pattern patternPassword = Pattern.compile(REGEX_PASSWORD);
+        Matcher matcherPassword = patternPassword.matcher(password);
+        return matcherEmail.find() && matcherPassword.find();
     }
+
 }

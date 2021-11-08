@@ -2,16 +2,20 @@ package hadinaJmartRK;
 
 public class Coupon extends Serializable
 {
-    private boolean used;
     public final String name;
     public final int code;
-    public final Type type;
     public final double cut;
+    public final Type type;
     public final double minimum;
+    private boolean used;
 
-    public Coupon(String name, int code, Type type, double cut, double minimum, int id)
+    public enum Type{
+        DISCOUNT,
+        REBATE;
+    }
+
+    public Coupon(String name, int code, Type type, double cut, double minimum)
     {
-        super(id);
         this.name = name;
         this.code = code;
         this.type = type;
@@ -21,13 +25,11 @@ public class Coupon extends Serializable
     }
 
     public boolean isUsed(){
-       return used;
+        return used;
     }
 
-    public boolean canApply(Treasury priceTag)
-    {
-        if(priceTag.getAdjustedPrice() >= minimum && used == false)
-        {
+    public boolean canApply(double price, double discount){
+        if(Treasury.getAdjustedPrice(price, discount) >= minimum && !used){
             return true;
         }
         else{
@@ -35,19 +37,20 @@ public class Coupon extends Serializable
         }
     }
 
-    public enum Type
-    {
-    DISCOUNT, REBATE
-    }
+    public double apply(double price, double discount){
+        used = true;
 
-    public double apply(Treasury pricetag){
-        this.used = true;
-        if (type == Type.DISCOUNT){
-            return (pricetag.getAdjustedPrice() * (100-this.cut)/100);
+        if(type==Type.DISCOUNT){
+            if(cut >= 100){
+                return (Treasury.getAdjustedPrice(price, discount) - Treasury.getAdjustedPrice(price, discount) * (100 / 100)); //cut max 100%
+            }else if(cut <= 0){
+                return (Treasury.getAdjustedPrice(price, discount) - Treasury.getAdjustedPrice(price, discount) * (0 / 100)); //cut min 0%
+            }else{
+                return (Treasury.getAdjustedPrice(price, discount) - Treasury.getAdjustedPrice(price, discount) * (cut / 100));
+            }
         }
-        else if (type==Type.REBATE){
-            return pricetag.getAdjustedPrice() - this.cut;
-        }
-        return 1;
+        return (Treasury.getAdjustedPrice(price, cut) - cut);
     }
 }
+
+

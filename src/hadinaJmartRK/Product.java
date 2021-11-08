@@ -7,38 +7,38 @@ package hadinaJmartRK;
  * @version (a version number or a date)
  */
 
-public abstract class Product extends Serializable
+
+public class Product extends Serializable
 {
-    public int id;
-    public String name;
-    public int weight;
-    public boolean conditionUsed;
-    public Treasury priceTag;
-    public ProductCategory category;
-    public ProductRating rating;
-    private static int idCounter;
+public int accountId;
+public String name;
+public int weight;
+public boolean conditionUsed;
+public double discount;
+public ProductCategory category;
+public double price;
+public byte shipmentPlans;
 
-    public Product(int id, int storeId, String name, int weight, boolean conditionUsed, Treasury priceTag, ProductCategory category)
-    {
-        super(id);
-        this.name = name;
-        this.weight = weight;
-        this.conditionUsed = conditionUsed;
-        this.priceTag = priceTag;
-        this.category = category;
-        this.rating = rating;
-        id = idCounter;
-        idCounter++;
-    }
+public Product(int accountId, String name, int weight, boolean conditionUsed, double price, double discount, ProductCategory category, byte shipmentPlans)
+{
+this.accountId = accountId;
+this.name = name;
+this.weight = weight;
+this.conditionUsed = conditionUsed;
+this.price = price;
+this.discount = discount;
+this.category = category;
+this.shipmentPlans = shipmentPlans;
+}
 
-    public String toString(){
-        return(
-        "Name: " + this.name +
-        "Weight: " + this.weight +
-        "conditionUsed: " + this.conditionUsed +
-        "priceTag: " + this.priceTag +
-        "category: " + this.category + 
-        "rating: " + this.rating +
-        "storeId: " + this.idCounter + "\n");
-    }
+ @Override
+ public String toString(){
+ return "Name: " + name +
+ "\nWeight: " + weight +
+ "\nconditionUsed: " + conditionUsed +
+ "\nprice: " + price +
+ "\ncategory: " + category +
+ "\ndiscount: " + discount +
+ "\naccountId: " + accountId;
+ }
 }

@@ -13,30 +13,25 @@ import java.util.Map;
 public class Serializable implements Comparable<Serializable>
 {
     public final int id;
+    public int incr;
+
     private static HashMap<Class<?>, Integer> mapCounter = new HashMap<>();
 
-    protected Serializable(int id)
-    {
-        Integer counter = mapCounter.get(getClass());
-        counter = counter == null ? 0 : counter + 1;
-        mapCounter.put(getClass(), counter);
-        this.id = counter;
-    }
-
-    public <T extends Serializable> int getClosingId(Class<T> clazz)
-    {
-        return mapCounter.get(clazz);
-    }
-
-    public <T extends Serializable> int setClosingId(Class<T> clazz, int id)
-    {
-        mapCounter.replace(clazz, id);
-        return mapCounter.get(clazz);
+    protected Serializable(){
+        Class gotClass = getClass();
+        if(mapCounter.get(gotClass) == null){
+            mapCounter.put(gotClass, 0);
+        }
+        else{
+            mapCounter.put(gotClass, mapCounter.get(gotClass) + 1);
+        }
+        this.id = mapCounter.get(gotClass);
     }
 
     @Override
     public int compareTo(Serializable other){
-        return(this.id <other.id) ? -1 :((this.id == other.id)?0 : 1);
+        return(this.id <other.id) ? -1 :((
+                this.id == other.id)?0 : 1);
     }
 
     public boolean equals(Object obj){
@@ -46,9 +41,7 @@ public class Serializable implements Comparable<Serializable>
                 return true;
             }
             return false;
-        }
-        else
-        {
+        }else{
             return false;
         }
     }
@@ -57,11 +50,21 @@ public class Serializable implements Comparable<Serializable>
         if(serializable.id == this.id){
             return true;
         }
-        else
-        {
+        else{
             return false;
         }
     }
+
+    public static <T extends Serializable> int setClosingId(Class<T> clazz, int id){
+
+        return mapCounter.getOrDefault(clazz, id);
+    }
+
+    public static <T extends Serializable> int getClosingId(Class<T> clazz){
+
+        return mapCounter.get(clazz);
+    }
+
 }
 
 

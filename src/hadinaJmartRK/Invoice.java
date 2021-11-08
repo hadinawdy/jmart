@@ -6,8 +6,8 @@ package hadinaJmartRK;
  * @author (your name)
  * @version (a version number or a date)
  */
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.ArrayList;
 
 public abstract class Invoice extends Serializable
 {
@@ -17,31 +17,46 @@ public abstract class Invoice extends Serializable
     public int complaintId;
     public Rating rating;
     public Status status;
+    public ArrayList<Record> history= new ArrayList<>();
 
-    public enum Status
-    {
-        WAITING_CONFIRMATION, CANCELLED, ON_PROGRESS, ON_DELIVERY, COMPLAINT, FINISHED, FAILED
-    }
-    
-    public enum Rating
-    {
-        NONE, BAD, NEUTRAL, GOOD
+    enum Rating{
+        NONE,
+        BAD,
+        NEUTRAL,
+        GOOD
     }
 
-    protected Invoice(int id, int buyerId, int productId){
-        super(id);
+    enum Status{
+        WAITING_CONFIRMATION,
+        CANCELLED,
+        ON_PROGRESS,
+        ON_DELIVERY,
+        COMPLAINT,
+        FINISHED,
+        FAILED
+    }
+
+    protected Invoice(int buyerId, int productId){
         this.buyerId = buyerId;
         this.productId = productId;
         this.date = new Date();
         this.rating = Rating.NONE;
         this.status = status.WAITING_CONFIRMATION;
+        this.complaintId = -1;
+
     }
+
+    /*public boolean read(String content){
+        return false;
+    }*/
+
     public abstract double getTotalPay();
-    
-    public ArrayList<Record> history= new ArrayList<Record>();
+
     class Record{
         public Status status;
         public Date date;
         public String message;
     }
+
 }
+

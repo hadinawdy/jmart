@@ -10,18 +10,26 @@ package hadinaJmartRK;
 
 import java.util.Date;
 import java.text.SimpleDateFormat;
+
+
 public class Complaint extends Serializable
 {
     public Date date;
     public String desc;
 
-    public Complaint(int id, String desc){
-        super(id);
+    public Complaint(String desc){
         this.desc = desc;
         this.date = new Date();
     }
-    
+
+    @Override
+    /*public boolean read(String content){
+        return false;
+    }*/
+
     public String toString(){
-        return "date: " + this.date + "\n" + "desc: " + this.desc + "n";
+        SimpleDateFormat SDFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String dateFormat = SDFormat.format(this.date);
+        return ("Complaint{date=" + dateFormat + "desc='" +this.desc+ "'}");
     }
 }
