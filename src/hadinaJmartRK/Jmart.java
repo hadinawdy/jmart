@@ -60,7 +60,7 @@ class Jmart
             List<Product> filtered = filterByPrice(list, 98000.0, 0.0);
             filtered.forEach(product -> System.out.println(product.price));
 
-            List<Product> filteredName = filterByName(list, "gtx", 1, 5);
+            List<Product> filteredName = filterByName(list, "nme", 1, 5);
             filteredName.forEach(product -> System.out.println(product.name));
 
             List<Product> filteredAccount = filterByAccountId(list, 1, 0, 5);
