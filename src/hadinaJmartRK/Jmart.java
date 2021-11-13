@@ -21,7 +21,7 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import java.util.stream.Collectors;
 
-class Jmart
+public class Jmart
 {
     public static List<Product> filterByCategory(List<Product> list, ProductCategory category){
         List<Product> products = new ArrayList<>();
@@ -99,5 +99,17 @@ class Jmart
     public static List<Product> filterByAccountId(List<Product> list, int accountId, int page, int pageSize) {
         Predicate<Product> predicate = a -> (a.accountId == accountId);
         return paginate(list, page, pageSize, predicate);
+    }
+
+    public static List<Product> read(String filepath) {
+        List <Product> products = new ArrayList<>();
+        try{
+            Gson gson = new Gson();
+            JsonReader reader = new JsonReader(new FileReader(filepath));
+            reader.beginArray();
+            while(reader.hasNext())
+
+
+        }
     }
 }
