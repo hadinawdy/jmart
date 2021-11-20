@@ -1,15 +1,20 @@
 package com.hadinaJmartRK;
 
+import com.hadinaJmartRK.dbjson.JsonTable;
+import com.hadinaJmartRK.dbjson.Serializable;
+
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Comparator;
 import java.util.Collections;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class Algorithm {
 
-    private Algorithm() {}
+    private Algorithm() {
+    }
 
     public static <T> int count(T[] array, T value) {
         int counter = 0;
@@ -344,8 +349,8 @@ public class Algorithm {
 
     public static <T> List<T> collect(T[] array, T value) {
         List<T> list = new ArrayList<T>();
-        for(T t : array){
-            if(t.equals(value)){
+        for (T t : array) {
+            if (t.equals(value)) {
                 list.add(t);
             }
         }
@@ -354,8 +359,8 @@ public class Algorithm {
 
     public static <T> List<T> collect(Iterable<T> iterable, T value) {
         List<T> list = new ArrayList<T>();
-        for(T t : iterable){
-            if(t.equals(value)){
+        for (T t : iterable) {
+            if (t.equals(value)) {
                 list.add(t);
             }
         }
@@ -364,9 +369,9 @@ public class Algorithm {
 
     public static <T> List<T> collect(Iterator<T> iterator, T value) {
         List<T> list = new ArrayList<T>();
-        while(iterator.hasNext()){
+        while (iterator.hasNext()) {
             T t = iterator.next();
-            if(t.equals(value)){
+            if (t.equals(value)) {
                 list.add(t);
             }
         }
@@ -375,8 +380,8 @@ public class Algorithm {
 
     public static <T> List<T> collect(T[] array, Predicate<T> pred) {
         List<T> list = new ArrayList<T>();
-        for(T t : array){
-            if(pred.predicate(t)){
+        for (T t : array) {
+            if (pred.predicate(t)) {
                 list.add(t);
             }
         }
@@ -385,8 +390,8 @@ public class Algorithm {
 
     public static <T> List<T> collect(Iterable<T> iterable, Predicate<T> pred) {
         List<T> list = new ArrayList<T>();
-        for(T t : iterable){
-            if(pred.predicate(t)){
+        for (T t : iterable) {
+            if (pred.predicate(t)) {
                 list.add(t);
             }
         }
@@ -395,12 +400,20 @@ public class Algorithm {
 
     public static <T> List<T> collect(Iterator<T> iterator, Predicate<T> pred) {
         List<T> list = new ArrayList<T>();
-        while(iterator.hasNext()){
+        while (iterator.hasNext()) {
             T t = iterator.next();
-            if(pred.predicate(t)){
+            if (pred.predicate(t)) {
                 list.add(t);
             }
         }
         return list;
+    }
+
+    public static <T extends Comparable<? super T>> List<T> paginate(Iterator<T> iterator, int page, int pageSize, Predicate<T> pred) {
+        List<T> list = new ArrayList<>();
+        iterator.forEachRemaining(list::add);
+        if (page < 0) page = 0;
+        if (pageSize < 0) pageSize = 0;
+        return list.stream().filter(pred::predicate).skip((long) page * pageSize).limit(pageSize).collect(Collectors.toList());
     }
 }

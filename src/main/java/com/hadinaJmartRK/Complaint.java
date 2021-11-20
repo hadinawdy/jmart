@@ -8,6 +8,8 @@ package com.hadinaJmartRK;
  * @version (a version number or a date)
  */
 
+import com.hadinaJmartRK.dbjson.Serializable;
+
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
@@ -21,11 +23,6 @@ public class Complaint extends Serializable
         this.desc = desc;
         this.date = new Date();
     }
-
-    @Override
-    /*public boolean read(String content){
-        return false;
-    }*/
 
     public String toString(){
         SimpleDateFormat SDFormat = new SimpleDateFormat("dd/MM/yyyy");

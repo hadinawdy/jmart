@@ -6,6 +6,7 @@ package com.hadinaJmartRK;
  * @author (your name)
  * @version (a version number or a date)
  */
+import com.hadinaJmartRK.dbjson.Serializable;
 import java.util.Date;
 import java.util.ArrayList;
 
@@ -33,7 +34,8 @@ public abstract class Invoice extends Serializable
         ON_DELIVERY,
         COMPLAINT,
         FINISHED,
-        FAILED
+        FAILED,
+        DELIVERED;
     }
 
     protected Invoice(int buyerId, int productId){
@@ -45,10 +47,6 @@ public abstract class Invoice extends Serializable
         this.complaintId = -1;
 
     }
-
-    /*public boolean read(String content){
-        return false;
-    }*/
 
     public abstract double getTotalPay();
 

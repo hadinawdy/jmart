@@ -8,6 +8,8 @@ package com.hadinaJmartRK;
  * @version (a version number or a date)
  */
 
+import com.hadinaJmartRK.dbjson.Serializable;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

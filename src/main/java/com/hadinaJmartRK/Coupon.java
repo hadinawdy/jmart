@@ -1,5 +1,7 @@
 package com.hadinaJmartRK;
 
+import com.hadinaJmartRK.dbjson.Serializable;
+
 public class Coupon extends Serializable
 {
     public final String name;
