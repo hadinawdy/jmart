@@ -11,6 +11,10 @@ public class Coupon extends Serializable
     public final double minimum;
     private boolean used;
 
+    public boolean canApply(Treasury treasury) {
+        return false;
+    }
+
     public enum Type{
         DISCOUNT,
         REBATE;

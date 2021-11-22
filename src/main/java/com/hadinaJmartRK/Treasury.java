@@ -6,6 +6,9 @@ public class Treasury
     public static final double BOTTOM_PRICE = 20000.0d;
     public static final double BOTTOM_FEE = 1000.0d;
 
+    public Treasury(double price, double discount) {
+    }
+
     public static double getAdjustedPrice(double price, double discount){
         return getDiscountedPrice(price, discount) + getAdminFee(price, discount);
     }

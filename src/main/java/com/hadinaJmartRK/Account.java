@@ -34,7 +34,6 @@ public class Account extends Serializable
         return false;
     }
 
-
     @Override
     public String toString(){
         return(
@@ -43,7 +42,6 @@ public class Account extends Serializable
             "password: " + this.password + "\n"
         );
     }*/
-
 
     public boolean validate()
     {

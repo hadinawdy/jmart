@@ -159,7 +159,7 @@ public class Algorithm {
         return null;
     }
 
-    public static <T> T find(T[] array, Predicate<T> pred) {
+    public static <T> T find(Iterator<Account> array, Predicate<Account> pred) {
         for (T arrayValue : array) {
             if (pred.predicate(arrayValue)) {
                 return arrayValue;
